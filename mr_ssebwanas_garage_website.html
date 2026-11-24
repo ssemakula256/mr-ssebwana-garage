@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mr Ssebwana's Garage - bicycle and motorcycle spare parts, oils and lubricants along Mateete–Lwebitakuli Road.">
+  <title>Mr Ssebwana's Garage | Bicycle & Motorcycle Spares</title>
+  <style>
+    :root {
+      --navy: #10243a;
+      --navy-light: #193a55;
+      --green: #087f5b;
+      --green-dark: #056044;
+      --gold: #e5b84b;
+      --cream: #f7f8f5;
+      --ink: #17212b;
+      --muted: #637181;
+      --white: #fff;
+      --shadow: 0 12px 35px rgba(16,36,58,.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    .top-strip {
+      background: var(--navy);
+      color: #e9f0f5;
+      padding: 9px 5%;
+      font-size: .88rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 3px 18px rgba(16,36,58,.07);
+    }
+    .nav-wrap {
+      max-width: 1180px;
+      margin: auto;
+      min-height: 82px;
+      padding: 12px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--navy); }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 13px;
+      display: grid; place-items: center;
+      background: var(--green); color: white;
+      font-weight: 900; font-size: 1.05rem;
+      border: 2px solid var(--gold);
+    }
+    .brand strong { display: block; font-size: 1.05rem; letter-spacing: .4px; }
+    .brand small { display: block; color: var(--muted); font-size: .73rem; letter-spacing: 1.2px; }
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a { color: var(--navy); font-weight: 700; font-size: .92rem; }
+    nav a:hover { color: var(--green); }
+    .nav-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 7px; padding: 12px 19px; font-weight: 700;
+      transition: .2s ease;
+    }
+    .nav-cta, .btn-green { background: var(--green); color: white; }
+    .nav-cta:hover, .btn-green:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .menu-btn {
+      display: none; border: 0; background: var(--navy); color: white;
+      border-radius: 6px; padding: 10px 13px; font-size: 1.1rem;
+    }
+    .hero {
+      color: white;
+      background:
+        linear-gradient(105deg, rgba(10,29,47,.96), rgba(10,49,55,.83)),
+        radial-gradient(circle at 80% 25%, rgba(229,184,75,.28), transparent 30%);
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1180px; margin: auto; padding: 88px 5% 92px;
+      display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 50px;
+    }
+    .eyebrow {
+      color: var(--gold); text-transform: uppercase; letter-spacing: 2.2px;
+      font-size: .78rem; font-weight: 800; margin-bottom: 15px;
+    }
+    h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1.08; margin-bottom: 20px; }
+    .hero p { color: #e1eaf0; max-width: 610px; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 29px; }
+    .btn-outline { color: white; border: 1px solid rgba(255,255,255,.65); }
+    .btn-outline:hover { background: white; color: var(--navy); }
+    .hero-note {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      border-radius: 18px; padding: 28px;
+      backdrop-filter: blur(5px);
+    }
+    .hero-note .big-icon { font-size: 3.4rem; margin-bottom: 10px; }
+    .hero-note h2 { font-size: 1.35rem; margin-bottom: 8px; }
+    .hero-note p { font-size: .95rem; }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .hero-tags span {
+      border: 1px solid rgba(255,255,255,.24); border-radius: 30px;
+      padding: 6px 11px; font-size: .78rem; color: #f5f7f8;
+    }
+    .trust-row {
+      max-width: 1180px; margin: -25px auto 0; padding: 0 5%;
+      position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+    }
+    .trust-item {
+      background: white; padding: 19px; border-radius: 10px;
+      box-shadow: var(--shadow); text-align: center;
+    }
+    .trust-item strong { display: block; color: var(--navy); }
+    .trust-item span { color: var(--muted); font-size: .86rem; }
+    section { padding: 76px 5%; }
+    .container { max-width: 1180px; margin: auto; }
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 36px; }
+    .section-head .eyebrow { color: var(--green); margin-bottom: 8px; }
+    .section-head h2 { color: var(--navy); font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2; }
+    .section-head p { color: var(--muted); margin-top: 12px; }
+    .product-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .product-card {
+      background: white; border-radius: 13px; padding: 25px;
+      border: 1px solid #e9eeeb; box-shadow: 0 7px 22px rgba(16,36,58,.045);
+    }
+    .product-icon {
+      width: 54px; height: 54px; display: grid; place-items: center;
+      border-radius: 12px; background: #e8f4ef; font-size: 1.7rem; margin-bottom: 17px;
+    }
+    .product-card h3 { color: var(--navy); font-size: 1.2rem; margin-bottom: 10px; }
+    .product-card p { color: var(--muted); font-size: .93rem; }
+    .product-card ul { list-style: none; margin-top: 15px; }
+    .product-card li { padding: 5px 0; color: #394957; font-size: .91rem; }
+    .product-card li::before { content: "✓"; color: var(--green); font-weight: 900; margin-right: 9px; }
+    .oils-section { background: #edf3ef; }
+    .oil-brands {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 25px;
+    }
+    .oil-brands span {
+      background: white; color: var(--navy); border: 1px solid #dce7e0;
+      border-radius: 30px; padding: 11px 19px; font-weight: 700;
+    }
+    .notice { text-align: center; color: var(--muted); margin-top: 18px; font-size: .9rem; }
+    .contact-band { background: var(--navy); color: white; text-align: center; }
+    .contact-band h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 12px; }
+    .contact-band p { color: #d9e4eb; }
+    .contact-band .btn { margin-top: 23px; }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; }
+    .location-card {
+      background: white; border: 1px solid #e7ece8; border-radius: 14px;
+      padding: 30px; box-shadow: var(--shadow);
+    }
+    .location-card h3 { color: var(--navy); margin-bottom: 13px; }
+    .location-card p { color: var(--muted); margin: 8px 0; }
+    .location-highlight {
+      min-height: 240px; border-radius: 14px; padding: 30px;
+      background: linear-gradient(135deg, var(--green), var(--navy));
+      color: white; display: flex; flex-direction: column; justify-content: center;
+    }
+    .location-highlight .pin { font-size: 2.5rem; }
+    .location-highlight h3 { font-size: 1.5rem; margin: 10px 0; }
+    .location-highlight p { color: #e1eee8; }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .contact-details a { color: var(--green); font-weight: 700; }
+    footer { background: #0b1928; color: #c8d3dc; text-align: center; padding: 25px 5%; font-size: .88rem; }
+    footer strong { color: white; }
+    .floating-wa {
+      position: fixed; right: 19px; bottom: 19px; z-index: 30;
+      background: #20bd64; color: white; border-radius: 40px;
+      padding: 13px 18px; font-weight: 800; box-shadow: 0 6px 22px rgba(0,0,0,.22);
+    }
+    .floating-wa:hover { background: #14994e; }
+    @media (max-width: 820px) {
+      .menu-btn { display: block; }
+      nav {
+        display: none; position: absolute; left: 0; right: 0; top: 100%;
+        background: white; padding: 18px 5% 23px; flex-direction: column; align-items: stretch;
+        box-shadow: 0 12px 18px rgba(16,36,58,.1);
+      }
+      nav.open { display: flex; }
+      nav a { padding: 7px 0; }
+      .nav-cta { text-align: center; }
+      .hero-inner { grid-template-columns: 1fr; padding-top: 65px; gap: 30px; }
+      .hero-note { max-width: 520px; }
+      .product-grid { grid-template-columns: repeat(2,1fr); }
+      .location-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .top-strip { justify-content: center; text-align: center; }
+      .brand strong { font-size: .9rem; }
+      .brand small { font-size: .65rem; }
+      .brand-mark { width: 42px; height: 42px; }
+      .hero-inner { padding: 58px 6% 70px; }
+      .trust-row { grid-template-columns: 1fr; margin-top: 16px; }
+      section { padding: 58px 6%; }
+      .product-grid { grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; }
+      .floating-wa { right: 12px; bottom: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <span>📍 Mateete–Lwebitakuli Road</span>
+    <span>📞 0751 214 506</span>
+  </div>
+
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="#home" aria-label="Mr Ssebwana's Garage home">
+        <span class="brand-mark">MSG</span>
+        <span>
+          <strong>MR. SSEBWANA'S GARAGE</strong>
+          <small>BICYCLE & MOTORCYCLE SPARES</small>
+        </span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#bicycle">Bicycle Parts</a>
+        <a href="#motorcycle">Motorcycle Parts</a>
+        <a href="#oils">Oils & Grease</a>
+        <a href="#location">Location</a>
+        <a class="nav-cta" href="https://wa.me/256751214506" target="_blank" rel="noopener">WhatsApp Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Your trusted local spare-parts shop</div>
+          <h1>MR. SSEBWANA'S GARAGE</h1>
+          <p>Quality bicycle and motorcycle spare parts, oils and lubricants. Visit us for the parts you need and friendly service.</p>
+          <div class="hero-actions">
+            <a class="btn btn-green" href="https://wa.me/256751214506?text=Hello%20Mr.%20Ssebwana%27s%20Garage%2C%20I%20would%20like%20to%20ask%20about%20spare%20parts." target="_blank" rel="noopener">Chat on WhatsApp</a>
+            <a class="btn btn-outline" href="#products">Explore Products</a>
+          </div>
+        </div>
+        <div class="hero-note">
+          <div class="big-icon">🚲 🏍️</div>
+          <h2>Parts for your ride</h2>
+          <p>From bicycle components to motorcycle essentials, plus oils and grease.</p>
+          <div class="hero-tags">
+            <span>Bicycle spares</span><span>Motorcycle spares</span><span>Oils & lubricants</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-row">
+      <div class="trust-item"><strong>Bicycle Parts</strong><span>Components and accessories</span></div>
+      <div class="trust-item"><strong>Motorcycle Parts</strong><span>Everyday replacement parts</span></div>
+      <div class="trust-item"><strong>Oils & Lubricants</strong><span>Oils and grease</span></div>
+    </div>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What we sell</div>
+          <h2>Our Products</h2>
+          <p>Explore some of the bicycle and motorcycle parts, oils and lubricants available at our garage. Contact us to confirm a particular item.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card" id="bicycle">
+            <div class="product-icon">🚲</div>
+            <h3>Bicycle Spare Parts</h3>
+            <p>Parts and accessories for bicycle repairs and maintenance.</p>
+            <ul>
+              <li>Handlebars and pedals</li>
+              <li>Spokes and wheel parts</li>
+              <li>Chains and freewheels</li>
+              <li>Front and rear hubs</li>
+              <li>Hub axles and tyres</li>
+              <li>Brake parts and discs</li>
+              <li>Bottom brackets and cranks</li>
+            </ul>
+          </article>
+          <article class="product-card" id="motorcycle">
+            <div class="product-icon">🏍️</div>
+            <h3>Motorcycle Spare Parts</h3>
+            <p>Useful replacement parts and accessories for motorcycles.</p>
+            <ul>
+              <li>Motorcycle chains</li>
+              <li>Bulbs and lights</li>
+              <li>Brake shoes</li>
+              <li>Spokes</li>
+              <li>Clutch cables</li>
+              <li>Accelerator cables</li>
+              <li>Other motorcycle parts</li>
+            </ul>
+          </article>
+          <article class="product-card" id="oils">
+            <div class="product-icon">🛢️</div>
+            <h3>Oils, Lubricants & Grease</h3>
+            <p>Oil and lubrication products for maintenance needs.</p>
+            <ul>
+              <li>Atlantic</li>
+              <li>Famaco</li>
+              <li>Querz</li>
+              <li>General</li>
+              <li>MAK</li>
+              <li>Shell</li>
+              <li>Grease and other lubricants</li>
+            </ul>
+          </article>
+        </div>
+        <p class="notice">Looking for a part that is not listed? Send us a WhatsApp message and ask.</p>
+      </div>
+    </section>
+
+    <section class="contact-band">
+      <div class="container">
+        <div class="eyebrow">We are ready to help</div>
+        <h2>Need a spare part?</h2>
+        <p>Message Mr. Ssebwana's Garage directly on WhatsApp to make an enquiry.</p>
+        <a class="btn btn-green" href="https://wa.me/256751214506?text=Hello%2C%20I%20am%20looking%20for%20a%20spare%20part." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Come and visit</div>
+          <h2>Find Our Garage</h2>
+          <p>We welcome customers looking for bicycle and motorcycle spare parts.</p>
+        </div>
+        <div class="location-grid">
+          <div class="location-card">
+            <h3>Business Location</h3>
+            <p><strong>Business:</strong> Mr. Ssebwana's Garage</p>
+            <p><strong>Road:</strong> Along Mateete–Lwebitakuli Road</p>
+            <p><strong>WhatsApp / Phone:</strong> 0751 214 506</p>
+            <div class="contact-details">
+              <a href="https://wa.me/256751214506" target="_blank" rel="noopener">WhatsApp: 0751 214 506 →</a>
+              <a href="tel:+256751214506">Call the garage →</a>
+            </div>
+          </div>
+          <div class="location-highlight">
+            <div class="pin">📍</div>
+            <h3>Along Mateete–Lwebitakuli Road</h3>
+            <p>Use the road name to find the garage. For more precise directions, contact us on WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>MR. SSEBWANA'S GARAGE</strong></p>
+    <p>Bicycle & Motorcycle Spare Parts | Oils & Lubricants</p>
+    <p>Mateete–Lwebitakuli Road · WhatsApp 0751 214 506</p>
+    <p style="margin-top:10px;">© <span id="year"></span> Mr. Ssebwana's Garage. All rights reserved.</p>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/256751214506" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">WhatsApp ↗</a>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
